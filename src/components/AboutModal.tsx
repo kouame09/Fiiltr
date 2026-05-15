@@ -39,7 +39,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
               {/* Header Section */}
               <div className="text-center space-y-4">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-50 text-[10px] font-bold text-gray-400 tracking-[0.2em] uppercase">
-                  À propos du projet
+                  À propos l'outil
                 </div>
                 <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
                   Pourquoi utiliser <span className="text-black">ChapChapCV</span> ?
@@ -85,8 +85,8 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   </h3>
                   <div className="space-y-4">
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      Salut ! Je suis <strong>Prince Kouamé</strong>, Développeur Web passionné par la création d'outils utiles à la communauté. 
-                      J'ai créé cet outil pour aider les talents africains à se démarquer sur le marché mondial.
+                      Salut ! Je suis <strong>Prince Kouamé</strong>, Software developer passionné par la Tech for Good. 
+                      J'ai créé cet outil pour aider les talents à decrocher facilement les entretiens d'embauche.
                     </p>
                     <a 
                       href="https://www.princekouame.com" 
@@ -106,20 +106,25 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   <div className="space-y-2 text-center md:text-left">
                     <h3 className="text-2xl font-bold">Soutenir le projet</h3>
                     <p className="text-gray-400 text-sm max-w-sm">
-                      Si cet outil vous a aidé à trouver votre emploi, n'hésitez pas à soutenir son hébergement et son développement futur.
+                      Si vous trouvez cet outil utile et que vous souhaitez soutenir sa maintenance et son développement futur, n'hésitez pas à contribuer.
                     </p>
                   </div>
                   <div className="flex flex-col items-center gap-4">
-                    <div className="px-8 py-4 bg-white text-black font-bold rounded-2xl flex items-center gap-3 shadow-xl transform transition hover:scale-105">
+                    <a 
+                      href="https://pay.wave.com/m/M_ci_BzrF5N5Dmt4d/c/ci/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-8 py-4 bg-white text-black font-bold rounded-2xl flex items-center gap-3 shadow-xl transform transition hover:scale-105"
+                    >
                       <Coffee className="w-5 h-5" /> Contribution libre via Wave
-                    </div>
-                    <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Numéro Wave: +225 07 48 37 31 16</p>
+                    </a>
+                    <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Merci pour votre soutien !</p>
                   </div>
                 </div>
               </div>
 
               <div className="text-center text-[10px] font-bold text-gray-300 uppercase tracking-[0.3em]">
-                Fait avec passion à Abidjan 🇨🇮
+                Fait avec passion pour vous!
               </div>
             </div>
           </motion.div>
