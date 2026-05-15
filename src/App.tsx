@@ -5,6 +5,7 @@ import CVEditor from './components/CVEditor';
 import CVPreview from './components/CVPreview';
 import AboutModal from './components/AboutModal';
 import AIImportModal from './components/AIImportModal';
+import MobileBlocker from './components/MobileBlocker';
 import { Download, FileText, User, RefreshCw, Info, Sparkles } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
@@ -116,7 +117,9 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen bg-gray-50 flex flex-col overflow-hidden">
+    <>
+      <MobileBlocker />
+      <div className="h-screen bg-gray-50 flex flex-col overflow-hidden">
       {/* Header */}
       <header className="bg-white border-b border-gray-100 px-8 py-5 flex items-center justify-between z-50 shrink-0">
         <div className="flex items-center gap-3">
@@ -185,6 +188,7 @@ export default function App() {
         onClose={() => setIsAIOpen(false)}
         onImport={handleAIImport}
       />
-    </div>
+      </div>
+    </>
   );
 }
