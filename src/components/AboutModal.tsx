@@ -85,8 +85,8 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   </h3>
                   <div className="space-y-4">
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      Salut ! Je suis <strong>Prince Kouamé</strong>, Software developer passionné par la Tech for Good. 
-                      J'ai créé cet outil pour aider les talents à decrocher facilement les entretiens d'embauche.
+                      Salut ! Je suis <strong>Prince Kouamé</strong>, Software developer passionné par la Tech for Good, c'est-à-dire l'utilisation de la technologie pour créer des solutions qui résolvent des problèmes humains réels.
+                      J'ai créé cet outil pour aider les talents à décrocher facilement les entretiens d'embauche.
                     </p>
                     <a 
                       href="https://www.princekouame.com" 
