@@ -53,8 +53,8 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
               <div className="grid md:grid-cols-2 gap-10">
                 <div className="space-y-6">
                   <div className="flex gap-4">
-                    <div className="p-3 bg-black rounded-2xl shrink-0 h-fit">
-                      <ShieldCheck className="w-6 h-6 text-white" />
+                    <div className="p-3 bg-gray-50 rounded-2xl shrink-0 h-fit border border-gray-100">
+                      <ShieldCheck className="w-6 h-6 text-black" />
                     </div>
                     <div className="space-y-2">
                       <h3 className="text-xl font-bold text-gray-900">C'est quoi un ATS ?</h3>

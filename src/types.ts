@@ -17,7 +17,7 @@ export interface SkillGroup {
 export interface Project {
   id: string;
   name: string;
-  techStack: string;
+  keywords: string;
   date: string;
   description: string[];
 }

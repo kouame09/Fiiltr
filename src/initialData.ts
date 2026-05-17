@@ -73,7 +73,7 @@ export const initialData: CVData = {
     {
       id: "proj-1",
       name: "Plateforme de Télémédecine",
-      techStack: "React, Node.js, WebRTC, Socket.io",
+      keywords: "React, Node.js, WebRTC, Socket.io",
       date: "2022",
       description: [
         "Conception d'un système de consultation vidéo en temps réel sécurisé.",
@@ -83,7 +83,7 @@ export const initialData: CVData = {
     {
       id: "proj-2",
       name: "Application de Suivi Logistique",
-      techStack: "React Native, Google Maps API, Firebase",
+      keywords: "React Native, Google Maps API, Firebase",
       date: "2021",
       description: [
         "Développement d'une application mobile pour le suivi en temps réel des livraisons urbaines.",

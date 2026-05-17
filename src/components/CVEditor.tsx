@@ -361,7 +361,7 @@ export default function CVEditor({ data, onChange }: Props) {
                   <Input label="Nom du Projet" value={proj.name} onChange={(v) => updateItem('projects', proj.id, { name: v })} />
                   <Input label="Date" value={proj.date} onChange={(v) => updateItem('projects', proj.id, { date: v })} />
                   <div className="col-span-2">
-                    <Input label="Technologies" value={proj.techStack} onChange={(v) => updateItem('projects', proj.id, { techStack: v })} />
+                    <Input label="Technologies, Outils, Méthodes, Mot clé" value={proj.keywords} onChange={(v) => updateItem('projects', proj.id, { keywords: v })} />
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -377,7 +377,7 @@ export default function CVEditor({ data, onChange }: Props) {
             ))}
           </AnimatePresence>
           <button
-            onClick={() => addItem('projects', { id: Math.random().toString(), name: '', techStack: '', date: '', description: [] })}
+            onClick={() => addItem('projects', { id: Math.random().toString(), name: '', keywords: '', date: '', description: [] })}
             className="cursor-pointer w-full py-4 border border-dashed border-gray-200 rounded-2xl text-gray-400 hover:border-black hover:text-black flex items-center justify-center gap-2 transition-all font-semibold text-xs tracking-widest uppercase"
           >
             <Plus className="w-4 h-4" /> Ajouter Projet

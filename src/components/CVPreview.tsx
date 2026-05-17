@@ -162,11 +162,14 @@ export default function CVPreview({ data, id }: Props) {
                     {exp.startDate}{exp.endDate && ` – ${exp.endDate}`}
                   </span>
                 </div>
-                <ul className="list-disc ml-5 mt-1 space-y-0.5 text-[9.5pt]">
+                <div className="ml-3 mt-1 space-y-0.5 text-[9.5pt]">
                   {exp.description.filter(d => d.trim()).map((bullet, idx) => (
-                    <li key={idx} className="pl-1">{bullet}</li>
+                    <div key={idx} className="flex gap-1.5">
+                      <span className="select-none">•</span>
+                      <span>{bullet}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ))}
           </div>
@@ -203,15 +206,18 @@ export default function CVPreview({ data, id }: Props) {
               <div key={proj.id} className="text-[10pt]">
                 <div className="flex justify-between items-baseline italic md:not-italic">
                   <span className="font-bold text-[10.5pt]">
-                    {proj.name} {proj.techStack && <span className="font-normal"> | {proj.techStack}</span>}
+                    {proj.name} {proj.keywords && <span className="font-normal"> | {proj.keywords}</span>}
                   </span>
                   <span className="text-[9pt] font-bold shrink-0 ml-2">{proj.date}</span>
                 </div>
-                <ul className="list-disc ml-5 mt-1 space-y-0.5 text-[9.5pt]">
+                <div className="ml-3 mt-1 space-y-0.5 text-[9.5pt]">
                   {proj.description.filter(d => d.trim()).map((bullet, idx) => (
-                    <li key={idx} className="pl-1">{bullet}</li>
+                    <div key={idx} className="flex gap-1.5">
+                      <span className="select-none">•</span>
+                      <span>{bullet}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ))}
           </div>
