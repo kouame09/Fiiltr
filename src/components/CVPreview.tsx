@@ -16,6 +16,7 @@ export default function CVPreview({ data, id }: Props) {
   const { personalInfo, settings, profileSummary, experiences, skills, awards, projects, certifications, education, languages, interests, recommendations } = data;
   const layout = settings?.headerLayout || 'center';
   const photoStyle = settings?.photoStyle || 'circle';
+  const fontFamily = settings?.fontFamily || 'serif';
 
   const renderPhoto = () => {
     if (!personalInfo.profilePicture) return null;
@@ -75,7 +76,8 @@ export default function CVPreview({ data, id }: Props) {
     <div
       id={id}
       className={cn(
-        "w-[210mm] min-h-[297mm] bg-white text-[#333] shadow-2xl p-[15mm] flex flex-col font-serif leading-tight",
+        "w-[210mm] min-h-[297mm] bg-white text-[#333] shadow-2xl p-[15mm] flex flex-col leading-tight",
+        fontFamily === 'sans' ? 'font-sans' : fontFamily === 'mono' ? 'font-mono' : 'font-serif',
         "mx-auto my-0 box-border text-[11pt]"
       )}
       style={{ wordBreak: 'break-word' }}

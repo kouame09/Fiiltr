@@ -17,7 +17,8 @@ export const initialData: CVData = {
   },
   settings: {
     headerLayout: 'center',
-    photoStyle: 'circle'
+    photoStyle: 'circle',
+    fontFamily: 'serif'
   },
   profileSummary: "Développeur Full-Stack passionné avec plus de 6 ans d'expérience dans la conception et le déploiement d'applications web scalables. Expert en React, Node.js et architectures Cloud. Fortement orienté vers la performance technique et l'expérience utilisateur, avec une solide expérience en gestion d'équipes agiles.",
   experiences: [

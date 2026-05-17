@@ -17,6 +17,7 @@ import {
   ChevronUp,
   AlignLeft,
   Languages,
+  Type,
   Heart,
   Users
 } from 'lucide-react';
@@ -162,6 +163,31 @@ export default function CVEditor({ data, onChange }: Props) {
                   </button>
                 )}
               </div>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <label className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.15em] ml-1 flex items-center gap-2">
+              <Type className="w-3 h-3" /> Police d'Écriture
+            </label>
+            <div className="flex gap-2">
+              {[
+                { id: 'serif', label: 'Serif' },
+                { id: 'sans', label: 'Sans Serif' },
+                { id: 'mono', label: 'Mono' }
+              ].map((font) => (
+                <button
+                  key={font.id}
+                  onClick={() => updateSettings('fontFamily', font.id)}
+                  className={`cursor-pointer flex-1 px-3 py-2 text-[10px] font-bold rounded-xl border transition-all ${
+                    (data.settings?.fontFamily || 'serif') === font.id
+                      ? 'bg-black text-white border-black'
+                      : 'bg-white text-gray-400 border-gray-100 hover:border-gray-200'
+                  }`}
+                >
+                  {font.label}
+                </button>
+              ))}
             </div>
           </div>
         </div>
