@@ -234,7 +234,7 @@ export default function CVEditor({ data, onChange }: Props) {
 
       {/* Experience */}
       <CollapsibleSection
-        title="Expérience Professionnelle"
+        title="Expériences Professionnelles"
         icon={<Briefcase className="w-4 h-4" />}
         isOpen={activeSection === 'experience'}
         onToggle={() => setActiveSection(activeSection === 'experience' ? null : 'experience')}

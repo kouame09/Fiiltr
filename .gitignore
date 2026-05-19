@@ -6,3 +6,5 @@ coverage/
 *.log
 .env*
 !.env.example
+# Ignore Git Commit Genie data
+.gitgenie/**

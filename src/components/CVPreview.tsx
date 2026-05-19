@@ -150,7 +150,7 @@ export default function CVPreview({ data, id }: Props) {
       {/* Experience */}
       {experiences.length > 0 && (
         <section className="mb-4">
-          <SectionHeader title="EXPÉRIENCE" />
+          <SectionHeader title="EXPÉRIENCES PROFESSIONNELLES" />
           <div className="mt-1 space-y-3">
             {experiences.map((exp) => (
               <div key={exp.id} className="text-[10pt]">
