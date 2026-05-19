@@ -6,6 +6,7 @@ import CVPreview from './components/CVPreview';
 import AboutModal from './components/AboutModal';
 import AIImportModal from './components/AIImportModal';
 import MobileBlocker from './components/MobileBlocker';
+import GitHubStarLink from './components/GitHubStarLink';
 import { Download, RefreshCw, Info, Sparkles } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
@@ -140,6 +141,7 @@ export default function App() {
           </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
+          <GitHubStarLink />
           <button
             onClick={() => setIsAIOpen(true)}
             className="cursor-pointer flex items-center gap-1.5 h-9 px-3.5 bg-black text-white rounded-lg text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-black/10"

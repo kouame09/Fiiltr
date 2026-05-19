@@ -288,7 +288,7 @@ Pour toute question juridique ou usage commercial à grande échelle, contactez 
   </tr>
   <tr>
     <td><strong>Rôle</strong></td>
-    <td>Software Developer — Tech for Good</td>
+    <td>Software Developer</td>
   </tr>
   <tr>
     <td><strong>Site web</strong></td>
