@@ -111,12 +111,12 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   </div>
                   <div className="flex flex-col items-center gap-4">
                     <a 
-                      href="https://pay.wave.com/m/M_ci_BzrF5N5Dmt4d/c/ci/"
+                      href="https://pay.genius.ci/product/chapchapcv-MpsmJo"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="cursor-pointer px-8 py-4 bg-white text-black font-bold rounded-2xl flex items-center gap-3 shadow-xl transform transition hover:scale-105"
                     >
-                      <Coffee className="w-5 h-5" /> Contribution libre via Wave
+                      <Coffee className="w-5 h-5" /> Contribution libre
                     </a>
                     <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Merci pour votre soutien !</p>
                   </div>
