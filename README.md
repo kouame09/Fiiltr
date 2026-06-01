@@ -1,92 +1,92 @@
 <div align="center">
 
-![Bannière ChapChapCV](./public/banner-github.jpg)
+![ChapChapCV Banner](./public/banner-github.jpg)
 
 # ChapChapCV
 
-**Générateur de CV ATS-friendly — prévisualisation en temps réel & export PDF**
+**ATS-friendly CV Builder — real-time preview & PDF export**
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Licence](https://img.shields.io/badge/Licence-Libre%20d'usage-22c55e)](#-licence)
+[![License](https://img.shields.io/badge/License-Free%20to%20use-22c55e)](#-license)
 
-*Créé par [Prince Kouamé](https://www.princekouame.com) — pour les talents en Côte d'Ivoire et partout ailleurs.*
+*Created by [Prince Kouamé](https://www.princekouame.com) — for talents in Côte d'Ivoire and everywhere else.*
 
-[🚀 Démarrage rapide](#-démarrage-rapide) ·
-[✨ Fonctionnalités](#-fonctionnalités) ·
+[🚀 Quick start](#-quick-start) ·
+[✨ Features](#-features) ·
 [📐 Architecture](#-architecture) ·
-[📄 Export PDF](#-export-pdf) ·
-[🤖 Import IA](#-import-ia-optionnel) ·
-[👤 Auteur](#-auteur--contact)
+[📄 PDF Export](#-pdf-export) ·
+[🤖 AI Import](#-ai-import-optional) ·
+[👤 Author](#-author--contact)
 
 </div>
 
 ---
 
-## 📖 À propos
+## 📖 About
 
-**ChapChapCV** est un éditeur de curriculum vitae pensé pour passer les filtres des **ATS** (*Applicant Tracking Systems*). Ces logiciels trient automatiquement les candidatures : un CV trop graphique, mal structuré ou illisible par machine a peu de chances d’atteindre un recruteur humain.
+**ChapChapCV** is a curriculum vitae editor designed to pass **ATS** (*Applicant Tracking Systems*) filters. These systems automatically sort applications: a CV that is too graphical, poorly structured, or unreadable by machines has little chance of reaching a human recruiter.
 
-ChapChapCV propose :
+ChapChapCV provides:
 
-- un **format sobre et lisible** par les robots de recrutement ;
-- une **prévisualisation A4** en direct pendant la saisie ;
-- un **export PDF** en un clic ;
-- un **import assisté par IA** (Google Gemini) pour remplir le CV à partir d’un texte ou d’un document existant.
+- a **clean, machine-readable format** that recruitment bots can parse ;
+- a **live A4 preview** while you type ;
+- a **one-click PDF export** ;
+- an **AI-assisted import** (Google Gemini) to fill your CV from existing text or documents.
 
-> **Libre d’usage** — utilisez, partagez et adaptez cet outil librement, y compris à des fins personnelles ou professionnelles. Voir la section [Licence](#-licence).
-
----
-
-## ✨ Fonctionnalités
-
-| Fonctionnalité | Description |
-|----------------|-------------|
-| **Éditeur complet** | Informations personnelles, résumé, expériences, compétences, projets, certifications, formation, langues, centres d’intérêt, recommandations |
-| **Mise en page ATS** | Structure linéaire, typographie classique, sans colonnes complexes ni graphismes superflus |
-| **3 layouts d’en-tête** | Photo + coordonnées : centré, photo à gauche, ou photo à droite |
-| **Personnalisation** | Photo (cercle ou coins arrondis), police (serif, sans-serif, mono) |
-| **Prévisualisation live** | Rendu A4 (`210mm × 297mm`) synchronisé avec l’éditeur |
-| **Sauvegarde locale** | Données persistées dans le `localStorage` du navigateur |
-| **Export PDF** | Génération via `html2canvas` + `jsPDF` |
-| **Import IA** | Extraction structurée depuis texte, PDF, DOCX, TXT, MD (clé API Gemini requise) |
-| **Données d’exemple** | CV type prérempli pour découvrir l’outil rapidement |
-| **Desktop only** | Interface optimisée pour écran large (≥ 1024px) |
+> **Free to use** — freely use, share, and adapt this tool, including for personal or professional purposes. See the [License](#-license) section.
 
 ---
 
-## 🧠 Pourquoi un CV « ATS-friendly » ?
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| **Full editor** | Personal info, summary, experience, skills, projects, certifications, education, languages, interests, references |
+| **ATS layout** | Linear structure, classic typography, no complex columns or unnecessary graphics |
+| **3 header layouts** | Photo + contact info: centered, photo left, or photo right |
+| **Customization** | Photo (circle or rounded corners), font (serif, sans-serif, mono) |
+| **Live preview** | A4 render (`210mm × 297mm`) synced with the editor |
+| **Local save** | Data persisted in the browser's `localStorage` |
+| **PDF export** | Generation via `html2canvas` + `jsPDF` |
+| **AI import** | Structured extraction from text, PDF, DOCX, TXT, MD (Gemini API key required) |
+| **Sample data** | Pre-filled example CV to quickly discover the tool |
+| **Desktop only** | Interface optimized for large screens (≥ 1024px) |
+
+---
+
+## 🧠 Why an "ATS-friendly" CV?
 
 ```mermaid
 flowchart LR
-  subgraph candidat [Candidat]
-    CV[CV soumis]
+  subgraph candidate [Candidate]
+    CV[CV submitted]
   end
 
-  subgraph ats [ATS - Robot recruteur]
-    Parse[Analyse & extraction]
-    Score[Score / filtrage]
+  subgraph ats [ATS - Recruiting bot]
+    Parse[Analysis & extraction]
+    Score[Scoring / filtering]
   end
 
-  subgraph humain [Recruteur humain]
-    Review[Lecture du CV]
-    Interview[Entretien]
+  subgraph human [Human recruiter]
+    Review[CV review]
+    Interview[Interview]
   end
 
   CV --> Parse
   Parse --> Score
-  Score -->|Score insuffisant| Rejet[❌ Rejet automatique]
-  Score -->|Score suffisant| Review
+  Score -->|Low score| Reject[❌ Auto-rejection]
+  Score -->|Sufficient score| Review
   Review --> Interview
 ```
 
-| Format classique (Canva, colonnes, icônes lourdes…) | Format ChapChapCV |
-|-----------------------------------------------------|-------------------|
-| Risque d’extraction incorrecte des compétences | Texte structuré et hiérarchisé |
-| Éléments graphiques non interprétés | Mise en page minimaliste |
-| Colonnes multiples | Flux vertical lisible |
+| Classic format (Canva, columns, heavy icons…) | ChapChapCV format |
+|------------------------------------------------|-------------------|
+| Risk of incorrect skill extraction | Structured, hierarchical text |
+| Graphical elements not interpreted | Minimalist layout |
+| Multiple columns | Readable vertical flow |
 
 ---
 
@@ -94,7 +94,7 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-  subgraph ui [Interface React]
+  subgraph ui [React Interface]
     App[App.tsx]
     Editor[CVEditor.tsx]
     Preview[CVPreview.tsx]
@@ -102,7 +102,7 @@ flowchart TB
     About[AboutModal.tsx]
   end
 
-  subgraph data [Données]
+  subgraph data [Data]
     Types[types.ts]
     Storage[(localStorage)]
     Initial[initialData.ts]
@@ -113,7 +113,7 @@ flowchart TB
     PDF[jsPDF]
   end
 
-  subgraph external [Services externes]
+  subgraph external [External services]
     Gemini[Google Gemini API]
   end
 
@@ -128,27 +128,27 @@ flowchart TB
   App --> H2C --> PDF
 ```
 
-### Structure du projet
+### Project structure
 
 ```
 chapchapcv/
 ├── public/
-│   ├── banner-github.jpg    # Bannière README
+│   ├── banner-github.jpg    # README banner
 │   ├── logo-noir.png
 │   ├── logo-blanc.png
 │   ├── favicon.png
 │   └── open-graph.png
 ├── src/
-│   ├── App.tsx              # Shell, export PDF, état global
+│   ├── App.tsx              # Shell, PDF export, global state
 │   ├── components/
-│   │   ├── CVEditor.tsx     # Formulaire d’édition
-│   │   ├── CVPreview.tsx    # Rendu A4 du CV
+│   │   ├── CVEditor.tsx     # Edit form
+│   │   ├── CVPreview.tsx    # A4 CV render
 │   │   ├── AIImportModal.tsx
 │   │   ├── AboutModal.tsx
 │   │   └── MobileBlocker.tsx
-│   ├── types.ts             # Schéma CVData
-│   ├── initialData.ts       # Données d’exemple
-│   └── index.css            # Styles globaux & print
+│   ├── types.ts             # CVData schema
+│   ├── initialData.ts       # Sample data
+│   └── index.css            # Global & print styles
 ├── .env.example
 ├── package.json
 └── vite.config.ts
@@ -156,40 +156,40 @@ chapchapcv/
 
 ---
 
-## 🚀 Démarrage rapide
+## 🚀 Quick start
 
-### Prérequis
+### Prerequisites
 
-- **Node.js** 18+ (recommandé : 20 LTS)
+- **Node.js** 18+ (recommended: 20 LTS)
 - **npm** 9+
 
 ### Installation
 
 ```bash
-# Cloner le dépôt
-git clone https://github.com/VOTRE_UTILISATEUR/chapchapcv.git
+# Clone the repo
+git clone https://github.com/YOUR_USERNAME/chapchapcv.git
 cd chapchapcv
 
-# Installer les dépendances
+# Install dependencies
 npm install
 ```
 
-### Lancer en développement
+### Run in development
 
 ```bash
 npm run dev
 ```
 
-L’application est disponible sur **http://localhost:3000** (port configurable dans `package.json`).
+The app is available at **http://localhost:3000** (port configurable in `package.json`).
 
-### Build de production
+### Production build
 
 ```bash
-npm run build    # Compile dans dist/
-npm run preview  # Prévisualise le build
+npm run build    # Compiles to dist/
+npm run preview  # Preview the build
 ```
 
-### Vérification TypeScript
+### TypeScript check
 
 ```bash
 npm run lint
@@ -197,166 +197,168 @@ npm run lint
 
 ---
 
-## 🔐 Variables d’environnement
+## 🔐 Environment variables
 
-Copiez le fichier d’exemple et configurez votre clé API :
+Copy the sample file and configure your API key:
 
 ```bash
 cp .env.example .env.local
 ```
 
-| Variable | Obligatoire | Description |
-|----------|-------------|-------------|
-| `GEMINI_API_KEY` | Non* | Clé API [Google AI Studio](https://aistudio.google.com/apikey) pour l’import IA |
-| `APP_URL` | Non | URL de l’application (déploiement) |
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `GEMINI_API_KEY` | No* | [Google AI Studio](https://aistudio.google.com/apikey) API key for AI import |
+| `APP_URL` | No | Application URL (deployment) |
 
-\* Sans clé Gemini, l’éditeur et l’export PDF fonctionnent normalement ; seul l’**Import IA** sera indisponible.
+\* Without a Gemini key, the editor and PDF export work normally; only the **AI Import** will be unavailable.
 
-**Exemple `.env.local` :**
+**Example `.env.local`:**
 
 ```env
-GEMINI_API_KEY="votre_cle_api_ici"
+GEMINI_API_KEY="your_api_key_here"
 ```
 
-> ⚠️ Ne commitez **jamais** votre fichier `.env.local` ni vos clés API.
+> ⚠️ **Never** commit your `.env.local` file or API keys.
 
 ---
 
-## 📄 Export PDF
+## 📄 PDF Export
 
-1. Remplissez ou importez votre CV dans l’éditeur.
-2. Vérifiez le rendu dans la prévisualisation à droite.
-3. Cliquez sur **Exporter PDF**.
+1. Fill in or import your CV in the editor.
+2. Check the render in the preview panel on the right.
+3. Click **Export PDF**.
 
-Le PDF est généré à partir du DOM de prévisualisation (`#cv-preview`) via **html2canvas** puis **jsPDF**. En cas d’échec, utilisez **Ctrl+P** → « Enregistrer en PDF » (styles d’impression inclus dans `index.css`).
-
----
-
-## 🤖 Import IA (optionnel)
-
-L’import IA permet de structurer automatiquement un CV existant :
-
-- **Coller du texte** brut
-- **Importer un fichier** : `.txt`, `.md`, `.pdf`, `.docx`
-
-Le modèle **Gemini** extrait les champs (expériences, compétences, formation, etc.) et les injecte dans l’éditeur. Les contenus non francophones peuvent être traduits en français.
+The PDF is generated from the preview DOM (`#cv-preview`) via **html2canvas** then **jsPDF**. If it fails, use **Ctrl+P** → "Save as PDF" (print styles included in `index.css`).
 
 ---
 
-## 🛠️ Stack technique
+## 🤖 AI Import (optional)
 
-| Couche | Technologie |
-|--------|-------------|
+The AI import allows you to automatically structure an existing CV:
+
+- **Paste raw text**
+- **Import a file**: `.txt`, `.md`, `.pdf`, `.docx`
+
+The **Gemini** model extracts fields (experience, skills, education, etc.) and injects them into the editor. Non-French content can be translated to French.
+
+---
+
+## 🛠️ Tech stack
+
+| Layer | Technology |
+|-------|------------|
 | UI | React 19, TypeScript |
 | Build | Vite 6 |
 | Styles | Tailwind CSS 4 |
 | Animations | Motion |
-| Icônes (UI) | Lucide React |
-| Export PDF | html2canvas, jsPDF |
-| IA | `@google/genai` (Gemini) |
-| Utilitaires | clsx, tailwind-merge |
+| Icons (UI) | Lucide React |
+| PDF Export | html2canvas, jsPDF |
+| AI | `@google/genai` (Gemini) |
+| Utilities | clsx, tailwind-merge |
 
 ---
 
-## 📜 Licence
+## 📜 License
 
-Ce projet est **libre d’usage**.
+This project is **free to use**.
 
-Vous êtes autorisé à :
+You are permitted to:
 
-- ✅ utiliser l’application gratuitement ;
-- ✅ modifier le code source ;
-- ✅ redistribuer des versions adaptées ;
-- ✅ l’utiliser dans un cadre personnel, éducatif ou professionnel.
+- ✅ use the application for free ;
+- ✅ modify the source code ;
+- ✅ redistribute adapted versions ;
+- ✅ use it for personal, educational, or professional purposes.
 
-**Conditions :**
+**Conditions:**
 
-- Conserver la mention de l’auteur original lors d’une redistribution substantielle du code ;
-- Ne pas présenter le projet comme un service officiel de tiers sans accord ;
-- L’outil est fourni **« en l’état »**, sans garantie.
+- Retain the original author credit when substantially redistributing the code ;
+- Do not present the project as an official third-party service without agreement ;
+- The tool is provided **"as is"**, without warranty.
 
-Pour toute question juridique ou usage commercial à grande échelle, contactez l’auteur (voir ci-dessous).
+For any legal questions or large-scale commercial use, contact the author (see below).
 
 ---
 
-## 👤 Auteur & contact
+## 👤 Author & contact
 
 <table>
   <tr>
-    <td><strong>Nom</strong></td>
+    <td><strong>Name</strong></td>
     <td>Prince Kouamé</td>
   </tr>
   <tr>
-    <td><strong>Rôle</strong></td>
+    <td><strong>Role</strong></td>
     <td>Software Developer</td>
   </tr>
   <tr>
-    <td><strong>Site web</strong></td>
+    <td><strong>Website</strong></td>
     <td><a href="https://www.princekouame.com">www.princekouame.com</a></td>
   </tr>
 </table>
 
-### ☕ Soutenir le projet
+### ☕ Support the project
 
-Si cet outil vous a été utile, vous pouvez contribuer librement à sa maintenance :
+If this tool has been useful to you, feel free to contribute to its maintenance:
 
-**[Contribution via Wave](https://pay.wave.com/m/M_ci_BzrF5N5Dmt4d/c/ci/)**
+**[Contribute via Wave](https://pay.wave.com/m/M_ci_BzrF5N5Dmt4d/c/ci/)**
 
-Merci pour votre soutien !
+Thank you for your support!
 
 ---
 
-## 🤝 Contribuer
+## 🤝 Contributing
 
-Les contributions sont les bienvenues :
+Contributions are welcome:
 
-1. **Forkez** le dépôt
-2. **Créez** une branche (`git checkout -b feature/ma-fonctionnalite`)
-3. **Commitez** vos changements (`git commit -m "feat: description claire"`)
-4. **Poussez** la branche (`git push origin feature/ma-fonctionnalite`)
-5. **Ouvrez** une Pull Request
+1. **Fork** the repo
+2. **Create** a branch (`git checkout -b feature/my-feature`)
+3. **Commit** your changes (`git commit -m "feat: clear description"`)
+4. **Push** the branch (`git push origin feature/my-feature`)
+5. **Open** a Pull Request
 
-### Idées de contributions
+### Contribution ideas
 
-- Amélioration de l’export PDF (qualité, accessibilité)
-- Nouveaux templates ATS
-- Internationalisation (EN, etc.)
-- Tests automatisés
-- Corrections de bugs et documentation
+- Improve PDF export (quality, accessibility)
+- New ATS templates
+- Internationalization
+- Automated tests
+- Bug fixes and documentation
 
 ---
 
 ## ❓ FAQ
 
 <details>
-<summary><strong>L’application fonctionne-t-elle sur mobile ?</strong></summary>
+<summary><strong>Does the app work on mobile?</strong></summary>
 
-Non. ChapChapCV est conçu pour le **desktop** (largeur ≥ 1024px) afin de garantir une expérience d’édition confortable sur deux panneaux (éditeur + prévisualisation).
+No. ChapChapCV is designed for **desktop** (width ≥ 1024px) to ensure a comfortable two-panel editing experience (editor + preview).
 </details>
 
 <details>
-<summary><strong>Mes données sont-elles envoyées sur un serveur ?</strong></summary>
+<summary><strong>Are my data sent to a server?</strong></summary>
 
-Non, par défaut. Le CV est stocké **localement** dans votre navigateur (`localStorage`). Seul l’**Import IA** envoie le contenu que vous choisissez à l’API Google Gemini.
+No, by default. Your CV is stored **locally** in your browser (`localStorage`). Only the **AI Import** sends the content you choose to the Google Gemini API.
 </details>
 
 <details>
-<summary><strong>Puis-je utiliser ChapChapCV sans clé API ?</strong></summary>
+<summary><strong>Can I use ChapChapCV without an API key?</strong></summary>
 
-Oui. L’édition manuelle, la prévisualisation et l’export PDF ne nécessitent pas de clé API.
+Yes. Manual editing, preview, and PDF export do not require an API key.
 </details>
 
 <details>
-<summary><strong>Mon CV sera-t-il accepté par tous les ATS ?</strong></summary>
+<summary><strong>Will my CV be accepted by all ATS?</strong></summary>
 
-Aucun outil ne peut garantir un passage à 100 %. ChapChapCV maximise les bonnes pratiques (structure, lisibilité machine), mais le résultat dépend aussi du contenu, des mots-clés et du ATS cible.
+No tool can guarantee a 100% pass rate. ChapChapCV maximizes best practices (structure, machine readability), but the result also depends on the content, keywords, and the target ATS.
 </details>
+
+---
 
 ---
 
 <div align="center">
 
-**Fait avec passion pour vous.**
+**Made with passion for you.**
 
 ![Logo](./public/logo-noir.png)
 
