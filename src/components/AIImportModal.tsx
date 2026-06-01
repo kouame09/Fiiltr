@@ -165,9 +165,15 @@ export default function AIImportModal({ isOpen, onClose, onImport }: AIImportMod
 
       onImport(processedData);
       onClose();
-    } catch (err) {
+    } catch (err: any) {
       console.error('AI Extraction Error:', err);
-      setError("Une erreur est survenue lors de l'analyse du CV. Assurez-vous que le fichier n'est pas protégé ou trop volumineux.");
+      const msg = err?.message || '';
+      if (msg.includes('API_KEY') || msg.includes('API key') || msg.includes('403') || msg.includes('401') || msg.includes('not valid') || msg.includes('quota') || msg.includes('billing')) {
+        setShowApiKeyInput(true);
+        setError("Votre clé API Gemini est invalide, expirée ou a atteint son quota. Ajoutez une nouvelle clé ci-dessous ou obtenez-en une depuis Google AI Studio.");
+      } else {
+        setError("Une erreur est survenue lors de l'analyse du CV. Vérifiez votre clé API ou réessayez.");
+      }
     } finally {
       setLoading(false);
     }
