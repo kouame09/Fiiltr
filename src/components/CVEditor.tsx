@@ -329,8 +329,8 @@ export default function CVEditor({ data, onChange }: Props) {
       >
         <div className="pt-4">
           <textarea
-            className="w-full p-4 border border-gray-100 bg-gray-50/50 rounded-xl text-sm h-24 focus:border-black outline-none transition-all placeholder:text-gray-300"
-            placeholder="Prix reçus, distinctions..."
+            className="w-full p-4 border border-gray-100 bg-gray-50/50 rounded-xl text-sm h-24 focus:border-black outline-none transition-all placeholder:text-gray-400"
+            placeholder="Prix reçus, distinctions (séparez chaque distinction par un point-virgule « ; » pour aller à la ligne)"
             value={data.awards}
             onChange={(e) => updateField('awards', e.target.value)}
           />

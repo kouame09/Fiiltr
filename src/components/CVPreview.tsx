@@ -19,15 +19,19 @@ export default function CVPreview({ data, id }: Props) {
   const renderPhoto = () => {
     if (!personalInfo.profilePicture) return null;
     return (
-      <img
-        src={personalInfo.profilePicture}
-        alt={personalInfo.fullName}
+      <div
         className={cn(
-          "shrink-0 object-cover border border-gray-100 bg-gray-50",
+          "shrink-0 border border-gray-100 bg-gray-50 overflow-hidden relative",
           photoStyle === 'circle' ? "rounded-full" : "rounded-2xl",
           layout === 'center' ? "w-24 h-24 mx-auto mb-3" : "w-28 h-28"
         )}
-      />
+      >
+        <img
+          src={personalInfo.profilePicture}
+          alt={personalInfo.fullName}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
     );
   };
 
@@ -84,7 +88,7 @@ export default function CVPreview({ data, id }: Props) {
       style={{ wordBreak: 'break-word' }}
     >
       {/* Header */}
-      <header className={cn(
+      <header data-cv-section="header" className={cn(
         "mb-6",
         layout === 'center' ? "text-center" : "flex justify-between items-start"
       )}>
@@ -140,7 +144,7 @@ export default function CVPreview({ data, id }: Props) {
 
       {/* Profile Summary */}
       {profileSummary && (
-        <section className="mb-4">
+        <section data-cv-section="summary" className="mb-4">
           <SectionHeader title="RÉSUMÉ DU PROFIL" />
           <p className="text-[10pt] leading-relaxed text-left mt-1 italic md:not-italic">
             {profileSummary}
@@ -150,11 +154,11 @@ export default function CVPreview({ data, id }: Props) {
 
       {/* Experience */}
       {experiences.length > 0 && (
-        <section className="mb-4">
+        <section data-cv-section="experience" className="mb-4">
           <SectionHeader title="EXPÉRIENCES PROFESSIONNELLES" />
           <div className="mt-1 space-y-3">
             {experiences.map((exp) => (
-              <div key={exp.id} className="text-[10pt]">
+              <div key={exp.id} data-cv-item className="text-[10pt]">
                 <div className="flex justify-between items-baseline font-bold italic md:not-italic">
                   <span className="text-[10.5pt]">
                     {exp.role}{exp.company && ` chez ${exp.company}`}{exp.location && `, ${exp.location}`}
@@ -179,7 +183,7 @@ export default function CVPreview({ data, id }: Props) {
 
       {/* Skills / Awards */}
       {(skills.length > 0 || awards) && (
-        <section className="mb-4">
+        <section data-cv-section="skills" className="mb-4">
           <SectionHeader title="COMPÉTENCES / DISTINCTIONS" />
           <div className="mt-1 space-y-1 text-[10pt]">
             {skills.map((skillGroup) => (
@@ -189,9 +193,18 @@ export default function CVPreview({ data, id }: Props) {
               </div>
             ))}
             {awards && (
-              <div className="flex gap-1">
+              <div className="flex gap-1 items-start">
                 <span className="font-bold shrink-0">Prix/Awards:</span>
-                <span>{awards}</span>
+                <div className="flex flex-col gap-0.5">
+                  {awards.split(';').map(a => a.trim()).filter(Boolean).map((award, index) => (
+                    <div key={index} className="flex items-start gap-1">
+                      {awards.split(';').map(a => a.trim()).filter(Boolean).length > 1 && (
+                        <span className="select-none text-gray-400">•</span>
+                      )}
+                      <span>{award}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -200,11 +213,11 @@ export default function CVPreview({ data, id }: Props) {
 
       {/* Projects */}
       {projects.length > 0 && (
-        <section className="mb-4">
+        <section data-cv-section="projects" className="mb-4">
           <SectionHeader title="PROJETS" />
           <div className="mt-1 space-y-3 font-serif">
             {projects.map((proj) => (
-              <div key={proj.id} className="text-[10pt]">
+              <div key={proj.id} data-cv-item className="text-[10pt]">
                 <div className="flex justify-between items-baseline italic md:not-italic">
                   <span className="font-bold text-[10.5pt]">
                     {proj.name} {proj.keywords && <span className="font-normal"> | {proj.keywords}</span>}
@@ -227,7 +240,7 @@ export default function CVPreview({ data, id }: Props) {
 
       {/* Certifications */}
       {certifications.length > 0 && (
-        <section className="mb-4">
+        <section data-cv-section="certifications" className="mb-4">
           <SectionHeader title="CERTIFICATIONS" />
           <div className="mt-1 space-y-1 text-[10pt]">
             {certifications.map((cert) => (
@@ -241,11 +254,11 @@ export default function CVPreview({ data, id }: Props) {
 
       {/* Education */}
       {education.length > 0 && (
-        <section className="mb-4">
+        <section data-cv-section="education" className="mb-4">
           <SectionHeader title="FORMATION" />
           <div className="mt-1 space-y-2">
             {education.map((edu) => (
-              <div key={edu.id} className="flex justify-between items-baseline">
+              <div key={edu.id} data-cv-item className="flex justify-between items-baseline">
                 <div className="text-[10pt] leading-snug">
                   <p className="font-bold italic md:not-italic">{edu.degree}</p>
                   <p className="italic text-[9.5pt]">{edu.school}</p>
@@ -262,7 +275,7 @@ export default function CVPreview({ data, id }: Props) {
 
       {/* Languages & Interests */}
       {((languages && languages.length > 0) || interests) && (
-        <section className="mb-4">
+        <section data-cv-section="languages" className="mb-4">
           <SectionHeader title="LANGUES & CENTRES D'INTÉRÊT" />
           <div className="mt-1 space-y-1 text-[10pt]">
             {languages && languages.length > 0 && (
@@ -285,11 +298,11 @@ export default function CVPreview({ data, id }: Props) {
 
       {/* Recommendations */}
       {recommendations && recommendations.length > 0 && (
-        <section className="mb-4">
+        <section data-cv-section="recommendations" className="mb-4">
           <SectionHeader title="RECOMMANDATIONS" />
           <div className="mt-1 grid grid-cols-2 gap-4">
             {recommendations.map((rec) => (
-              <div key={rec.id} className="text-[9.5pt] leading-tight">
+              <div key={rec.id} data-cv-item className="text-[9.5pt] leading-tight">
                 <p className="font-bold italic md:not-italic">{rec.name}</p>
                 <p className="text-[9pt]">{rec.role}, {rec.company}</p>
                 <p className="text-[9pt] text-gray-600 italic">{rec.contact}</p>

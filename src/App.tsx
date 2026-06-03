@@ -61,43 +61,112 @@ export default function App() {
       // Temporarily remove transform for clean capture
       const originalTransform = element.style.transform;
       element.style.transform = 'none';
+      element.offsetHeight; // force reflow
 
+      // --- Step 1: Collect intelligent break points ---
+      const elementRect = element.getBoundingClientRect();
+      const breakPoints: number[] = [];
+
+      const sections = element.querySelectorAll('[data-cv-section]');
+      sections.forEach(section => {
+        const sectionEl = section as HTMLElement;
+        const sectionTop = sectionEl.getBoundingClientRect().top - elementRect.top;
+        breakPoints.push(sectionTop);
+
+        // For sections with multiple items, allow breaks between items
+        // (skip first item so section header stays grouped with it)
+        const items = sectionEl.querySelectorAll('[data-cv-item]');
+        if (items.length > 1) {
+          for (let i = 1; i < items.length; i++) {
+            const itemTop = (items[i] as HTMLElement).getBoundingClientRect().top - elementRect.top;
+            breakPoints.push(itemTop);
+          }
+        }
+      });
+
+      breakPoints.sort((a, b) => a - b);
+
+      // --- Step 2: Capture full CV as one image ---
       const canvas = await html2canvas(element, {
-        scale: 3,
+        scale: 4, // Increased to 4 for high-DPI crystal clear text
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
-        windowWidth: 794
+        windowWidth: 794,
       });
 
-      // Restore transform
       element.style.transform = originalTransform;
 
-      const imgData = canvas.toDataURL('image/png');
+      // --- Step 3: Conversion factors ---
+      const elementWidth = element.offsetWidth;
+      const elementHeight = element.offsetHeight;
+      const canvasScaleY = canvas.height / elementHeight;
+
       const pdf = new jsPDF('p', 'mm', 'a4');
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = pdfWidth / imgWidth;
-      const finalHeight = imgHeight * ratio;
+      const pdfWidthMM = pdf.internal.pageSize.getWidth();   // 210
+      const pdfHeightMM = pdf.internal.pageSize.getHeight();  // 297
+      const pxToMM = pdfWidthMM / elementWidth;
 
-      let heightLeft = finalHeight;
-      let position = 0;
+      const MARGIN_MM = 15;
+      // Page 1: already has 15mm top padding baked into the image → only need bottom margin
+      const firstPageMaxPx = (pdfHeightMM - MARGIN_MM) / pxToMM;
+      // Later pages: need both top and bottom margin
+      const laterPageMaxPx = (pdfHeightMM - MARGIN_MM * 2) / pxToMM;
 
-      // First page
-      pdf.addImage(imgData, 'JPEG', 0, position, pdfWidth, finalHeight);
-      heightLeft -= pdfHeight;
+      // --- Step 4: Determine page cut positions ---
+      const pageCuts: number[] = [0];
+      let cursor = 0;
+      let isFirst = true;
 
-      // Additional pages
-      while (heightLeft > 0) {
-        position = heightLeft - finalHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', 0, position, pdfWidth, finalHeight);
-        heightLeft -= pdfHeight;
+      while (cursor < elementHeight) {
+        const maxPx = isFirst ? firstPageMaxPx : laterPageMaxPx;
+        const pageBottom = cursor + maxPx;
+
+        if (pageBottom >= elementHeight) break; // rest fits on current page
+
+        // Find last safe break point that fits on this page
+        let bestBreak = -1;
+        for (let i = breakPoints.length - 1; i >= 0; i--) {
+          if (breakPoints[i] <= pageBottom && breakPoints[i] > cursor) {
+            bestBreak = breakPoints[i];
+            break;
+          }
+        }
+
+        // Fallback: if no break point found (single block taller than a page), cut mechanically
+        if (bestBreak <= cursor) {
+          bestBreak = pageBottom;
+        }
+
+        pageCuts.push(bestBreak);
+        cursor = bestBreak;
+        isFirst = false;
       }
-      
+
+      // --- Step 5: Render each page ---
+      for (let i = 0; i < pageCuts.length; i++) {
+        const startPx = pageCuts[i];
+        const endPx = i + 1 < pageCuts.length ? pageCuts[i + 1] : elementHeight;
+
+        const cropY = Math.round(startPx * canvasScaleY);
+        const cropH = Math.round((endPx - startPx) * canvasScaleY);
+        if (cropH <= 0) continue;
+
+        // Crop the relevant vertical slice from the full canvas
+        const pageCanvas = document.createElement('canvas');
+        pageCanvas.width = canvas.width;
+        pageCanvas.height = cropH;
+        const ctx = pageCanvas.getContext('2d')!;
+        ctx.drawImage(canvas, 0, cropY, canvas.width, cropH, 0, 0, canvas.width, cropH);
+
+        const imgData = pageCanvas.toDataURL('image/png');
+        const contentHeightMM = (endPx - startPx) * pxToMM;
+        const topMM = i === 0 ? 0 : MARGIN_MM;
+
+        if (i > 0) pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, topMM, pdfWidthMM, contentHeightMM);
+      }
+
       const fileName = data.personalInfo.fullName ? `CV - ${data.personalInfo.fullName}` : 'CV';
       pdf.save(`${fileName}.pdf`);
     } catch (error) {
@@ -107,6 +176,7 @@ export default function App() {
       if (btn) btn.disabled = false;
     }
   };
+
 
   const handleAIImport = (importedData: Partial<CVData>) => {
     setData(prev => ({
