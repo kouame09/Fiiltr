@@ -1,8 +1,8 @@
 <div align="center">
 
-![ChapChapCV Banner](./public/banner-github.jpg)
+![Fiiltr Banner](./public/banner-github.jpg)
 
-# ChapChapCV
+# Fiiltr
 
 **ATS-friendly CV Builder — real-time preview & PDF export**
 
@@ -27,9 +27,9 @@
 
 ## 📖 About
 
-**ChapChapCV** is a curriculum vitae editor designed to pass **ATS** (*Applicant Tracking Systems*) filters. These systems automatically sort applications: a CV that is too graphical, poorly structured, or unreadable by machines has little chance of reaching a human recruiter.
+**Fiiltr** is a curriculum vitae editor designed to pass **ATS** (*Applicant Tracking Systems*) filters. These systems automatically sort applications: a CV that is too graphical, poorly structured, or unreadable by machines has little chance of reaching a human recruiter.
 
-ChapChapCV provides:
+Fiiltr provides:
 
 - a **clean, machine-readable format** that recruitment bots can parse ;
 - a **live A4 preview** while you type ;
@@ -82,7 +82,7 @@ flowchart LR
   Review --> Interview
 ```
 
-| Classic format (Canva, columns, heavy icons…) | ChapChapCV format |
+| Classic format (Canva, columns, heavy icons…) | Fiiltr format |
 |------------------------------------------------|-------------------|
 | Risk of incorrect skill extraction | Structured, hierarchical text |
 | Graphical elements not interpreted | Minimalist layout |
@@ -131,7 +131,7 @@ flowchart TB
 ### Project structure
 
 ```
-chapchapcv/
+Fiiltr/
 ├── public/
 │   ├── banner-github.jpg    # README banner
 │   ├── logo-noir.png
@@ -167,8 +167,8 @@ chapchapcv/
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/chapchapcv.git
-cd chapchapcv
+git clone https://github.com/YOUR_USERNAME/Fiiltr.git
+cd Fiiltr
 
 # Install dependencies
 npm install
@@ -331,7 +331,7 @@ Contributions are welcome:
 <details>
 <summary><strong>Does the app work on mobile?</strong></summary>
 
-No. ChapChapCV is designed for **desktop** (width ≥ 1024px) to ensure a comfortable two-panel editing experience (editor + preview).
+No. Fiiltr is designed for **desktop** (width ≥ 1024px) to ensure a comfortable two-panel editing experience (editor + preview).
 </details>
 
 <details>
@@ -341,7 +341,7 @@ No, by default. Your CV is stored **locally** in your browser (`localStorage`). 
 </details>
 
 <details>
-<summary><strong>Can I use ChapChapCV without an API key?</strong></summary>
+<summary><strong>Can I use Fiiltr without an API key?</strong></summary>
 
 Yes. Manual editing, preview, and PDF export do not require an API key.
 </details>
@@ -349,7 +349,7 @@ Yes. Manual editing, preview, and PDF export do not require an API key.
 <details>
 <summary><strong>Will my CV be accepted by all ATS?</strong></summary>
 
-No tool can guarantee a 100% pass rate. ChapChapCV maximizes best practices (structure, machine readability), but the result also depends on the content, keywords, and the target ATS.
+No tool can guarantee a 100% pass rate. Fiiltr maximizes best practices (structure, machine readability), but the result also depends on the content, keywords, and the target ATS.
 </details>
 
 ---

@@ -42,10 +42,10 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   À propos l'outil
                 </div>
                 <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
-                  Pourquoi utiliser <span className="text-black">ChapChapCV</span> ?
+                  Pourquoi utiliser <span className="text-black">Fiiltr</span> ?
                 </h2>
                 <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                  L'outil conçu avec les critères ATS pour maximiser vos chances de décrocher un entretien en Côte d'Ivoire et partout ailleurs.
+                  L'outil conçu avec les critères ATS pour maximiser vos chances de décrocher un entretien. 100% gratuit et open source.
                 </p>
               </div>
 
@@ -59,7 +59,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                     <div className="space-y-2">
                       <h3 className="text-xl font-bold text-gray-900">C'est quoi un ATS ?</h3>
                       <p className="text-sm text-gray-600 leading-relaxed">
-                        L'<strong>Applicant Tracking System</strong> est un robot utilisé par les recruteurs pour trier automatiquement les CV. 
+                        L'<strong>Applicant Tracking System</strong> est un robot utilisé par les recruteurs pour trier automatiquement les CV.
                         90% des CV sont rejetés avant même d'être vus par un humain car ils sont illisibles par ces machines.
                       </p>
                     </div>
@@ -72,7 +72,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                     <div className="space-y-2">
                       <h3 className="text-xl font-bold text-gray-900">Sobriété & Efficacité</h3>
                       <p className="text-sm text-gray-600 leading-relaxed">
-                        Contrairement aux CV avec beaucoup de graphismes, de couleurs et de colonnes complexes (Canva, etc.), 
+                        Contrairement aux CV avec beaucoup de graphismes, de couleurs et de colonnes complexes (Canva, etc.),
                         ce format minimaliste garantit que les algorithmes extraient vos compétences sans erreur.
                       </p>
                     </div>
@@ -88,9 +88,9 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                       Salut ! Je suis <strong>Prince Kouamé</strong>, Software developer passionné par la Tech for Good, c'est-à-dire l'utilisation de la technologie pour créer des solutions qui résolvent des problèmes humains réels.
                       J'ai créé cet outil pour aider les talents à décrocher facilement les entretiens d'embauche.
                     </p>
-                    <a 
-                      href="https://www.princekouame.com" 
-                      target="_blank" 
+                    <a
+                      href="https://www.princekouame.com"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="cursor-pointer inline-flex items-center gap-2 text-sm font-bold text-black hover:underline"
                     >
@@ -110,8 +110,8 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                     </p>
                   </div>
                   <div className="flex flex-col items-center gap-4">
-                    <a 
-                      href="https://geniuspay.ci/product/chapchapcv-MpsmJo"
+                    <a
+                      href="https://geniuspay.ci/product/Fiiltr-MpsmJo"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="cursor-pointer px-8 py-4 bg-white text-black font-bold rounded-2xl flex items-center gap-3 shadow-xl transform transition hover:scale-105"

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Github, Star } from 'lucide-react';
 
-const GITHUB_REPO = import.meta.env.VITE_GITHUB_REPO ?? 'kouame09/ChapChapCV';
+const GITHUB_REPO = import.meta.env.VITE_GITHUB_REPO ?? 'kouame09/Fiiltr';
 const REPO_URL = `https://github.com/${GITHUB_REPO}`;
 const API_URL = `https://api.github.com/repos/${GITHUB_REPO}`;
 const REFRESH_MS = 5 * 60 * 1000;

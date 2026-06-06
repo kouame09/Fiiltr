@@ -30,7 +30,7 @@ export default function MobileBlocker() {
         {/* Title */}
         <div className="space-y-4">
           <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
-            ChapChapCV
+            Fiiltr
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             Pour une expérience optimale, veuillez utiliser cet outil sur un ordinateur (PC ou laptop).
@@ -60,7 +60,7 @@ export default function MobileBlocker() {
         {/* Footer */}
         <div className="pt-6 border-t border-gray-100">
           <p className="text-[10px] font-bold text-gray-300 uppercase tracking-[0.3em]">
-            By Prince Kouamé
+            ATS-Friendly
           </p>
         </div>
       </div>

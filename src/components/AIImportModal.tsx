@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Sparkles, FileText, Upload, AlertCircle, Loader2, Key, ChevronDown, ChevronUp, ExternalLink, Check } from 'lucide-react';
+import { X, Sparkles, FileText, Upload, AlertCircle, Loader2 } from 'lucide-react';
 import { GoogleGenAI, Type } from "@google/genai";
 import { CVData } from '../types';
 
@@ -16,35 +16,14 @@ export default function AIImportModal({ isOpen, onClose, onImport }: AIImportMod
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [apiKey, setApiKey] = useState('');
-  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
-  const [keySaved, setKeySaved] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const saved = localStorage.getItem(API_KEY_STORAGE);
-    if (saved) setApiKey(saved);
-  }, []);
-
-  const getApiKey = () => apiKey || process.env.GEMINI_API_KEY || '';
-
-  const handleSaveKey = () => {
-    if (apiKey.trim()) {
-      localStorage.setItem(API_KEY_STORAGE, apiKey.trim());
-      setKeySaved(true);
-      setTimeout(() => setKeySaved(false), 2000);
-    }
-  };
-
-  const handleClearKey = () => {
-    localStorage.removeItem(API_KEY_STORAGE);
-    setApiKey('');
-  };
+  const getApiKey = () => localStorage.getItem(API_KEY_STORAGE) || process.env.GEMINI_API_KEY || '';
 
   const handleImport = async (inputContent: string | { data: string, mimeType: string }) => {
     const key = getApiKey();
     if (!key) {
-      setError("Aucune clé API Gemini configurée. Ajoutez votre clé ci-dessous option \"Clé API GEMINI\".");
+      setError("Aucune clé API Gemini configurée. Ajoutez votre clé depuis le bouton API dans le menu.");
       return;
     }
 
@@ -169,8 +148,7 @@ export default function AIImportModal({ isOpen, onClose, onImport }: AIImportMod
       console.error('AI Extraction Error:', err);
       const msg = err?.message || '';
       if (msg.includes('API_KEY') || msg.includes('API key') || msg.includes('403') || msg.includes('401') || msg.includes('not valid') || msg.includes('quota') || msg.includes('billing')) {
-        setShowApiKeyInput(true);
-        setError("Votre clé API Gemini est invalide, expirée ou a atteint son quota. Ajoutez une nouvelle clé ci-dessous ou obtenez-en une depuis Google AI Studio.");
+        setError("Votre clé API Gemini est invalide, expirée ou a atteint son quota. Mettez-la à jour depuis le bouton API dans le menu.");
       } else {
         setError("Une erreur est survenue lors de l'analyse du CV. Vérifiez votre clé API ou réessayez.");
       }
@@ -280,61 +258,6 @@ export default function AIImportModal({ isOpen, onClose, onImport }: AIImportMod
                     </>
                   )}
                 </button>
-              </div>
-
-              <div className="border-t border-gray-50 pt-4 space-y-3">
-                <button
-                  onClick={() => setShowApiKeyInput(!showApiKeyInput)}
-                  className="flex items-center gap-2 text-[10px] font-bold text-gray-400 hover:text-black uppercase tracking-widest transition-colors"
-                >
-                  <Key className="w-3 h-3" />
-                  Clé API Gemini
-                  {showApiKeyInput ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                </button>
-
-                {showApiKeyInput && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="space-y-3 overflow-hidden"
-                  >
-                    <p className="text-[10px] text-gray-400 leading-relaxed">
-                      Entrez votre propre clé API Gemini pour utiliser l'importation IA. 
-                      <a
-                        href="https://aistudio.google.com/app/apikey"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-black font-bold hover:underline ml-1"
-                      >
-                        Obtenir une clé <ExternalLink className="w-2.5 h-2.5" />
-                      </a>
-                    </p>
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        className="flex-1 px-4 py-2.5 border border-gray-100 bg-gray-50/30 rounded-xl text-xs focus:border-black outline-none transition-all placeholder:text-gray-300"
-                        placeholder="AIzaSy..."
-                        value={apiKey}
-                        onChange={(e) => setApiKey(e.target.value)}
-                      />
-                      <button
-                        onClick={handleSaveKey}
-                        className="px-4 py-2.5 bg-black text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shrink-0"
-                      >
-                        {keySaved ? <Check className="w-3 h-3" /> : 'Sauvegarder'}
-                      </button>
-                    </div>
-                    {apiKey && (
-                      <button
-                        onClick={handleClearKey}
-                        className="text-[10px] text-red-400 hover:text-red-600 font-bold uppercase tracking-widest transition-colors"
-                      >
-                        Supprimer la clé
-                      </button>
-                    )}
-                  </motion.div>
-                )}
               </div>
 
               <div className="flex items-center gap-3 text-[10px] text-gray-400 font-bold uppercase tracking-widest text-center justify-center">
