@@ -14,18 +14,18 @@
 
 *Created by [Prince Kouamé](https://www.princekouame.com) — for talents in Côte d'Ivoire and everywhere else.*
 
-[🚀 Quick start](#-quick-start) ·
-[✨ Features](#-features) ·
-[📐 Architecture](#-architecture) ·
-[📄 PDF Export](#-pdf-export) ·
-[🤖 AI Import](#-ai-import-optional) ·
-[👤 Author](#-author--contact)
+[ Quick start](#-quick-start) ·
+[ Features](#-features) ·
+[ Architecture](#-architecture) ·
+[ PDF Export](#-pdf-export) ·
+[ AI Import](#-ai-import-optional) ·
+[ Author](#-author--contact)
 
 </div>
 
 ---
 
-## 📖 About
+## About
 
 **Fiiltr** is a curriculum vitae editor designed to pass **ATS** (*Applicant Tracking Systems*) filters. These systems automatically sort applications: a CV that is too graphical, poorly structured, or unreadable by machines has little chance of reaching a human recruiter.
 
@@ -40,7 +40,7 @@ Fiiltr provides:
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---------|-------------|
@@ -57,7 +57,7 @@ Fiiltr provides:
 
 ---
 
-## 🧠 Why an "ATS-friendly" CV?
+## Why an "ATS-friendly" CV?
 
 ```mermaid
 flowchart LR
@@ -90,7 +90,7 @@ flowchart LR
 
 ---
 
-## 📐 Architecture
+## Architecture
 
 ```mermaid
 flowchart TB
@@ -156,7 +156,7 @@ Fiiltr/
 
 ---
 
-## 🚀 Quick start
+## Quick start
 
 ### Prerequisites
 
@@ -197,7 +197,7 @@ npm run lint
 
 ---
 
-## 🔐 Environment variables
+## Environment variables
 
 Copy the sample file and configure your API key:
 
@@ -218,11 +218,11 @@ cp .env.example .env.local
 GEMINI_API_KEY="your_api_key_here"
 ```
 
-> ⚠️ **Never** commit your `.env.local` file or API keys.
+> **Never** commit your `.env.local` file or API keys.
 
 ---
 
-## 📄 PDF Export
+## PDF Export
 
 1. Fill in or import your CV in the editor.
 2. Check the render in the preview panel on the right.
@@ -232,7 +232,7 @@ The PDF is generated from the preview DOM (`#cv-preview`) via **html2canvas** th
 
 ---
 
-## 🤖 AI Import (optional)
+## AI Import (optional)
 
 The AI import allows you to automatically structure an existing CV:
 
@@ -243,7 +243,7 @@ The **Gemini** model extracts fields (experience, skills, education, etc.) and i
 
 ---
 
-## 🛠️ Tech stack
+## Tech stack
 
 | Layer | Technology |
 |-------|------------|
@@ -258,16 +258,16 @@ The **Gemini** model extracts fields (experience, skills, education, etc.) and i
 
 ---
 
-## 📜 License
+## License
 
 This project is **free to use**.
 
 You are permitted to:
 
-- ✅ use the application for free ;
-- ✅ modify the source code ;
-- ✅ redistribute adapted versions ;
-- ✅ use it for personal, educational, or professional purposes.
+- use the application for free ;
+- modify the source code ;
+- redistribute adapted versions ;
+- use it for personal, educational, or professional purposes.
 
 **Conditions:**
 
@@ -279,7 +279,7 @@ For any legal questions or large-scale commercial use, contact the author (see b
 
 ---
 
-## 👤 Author & contact
+## Author & contact
 
 <table>
   <tr>
@@ -296,7 +296,7 @@ For any legal questions or large-scale commercial use, contact the author (see b
   </tr>
 </table>
 
-### ☕ Support the project
+### Support the project
 
 If this tool has been useful to you, feel free to contribute to its maintenance:
 
@@ -306,7 +306,7 @@ Thank you for your support!
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome:
 
@@ -326,7 +326,7 @@ Contributions are welcome:
 
 ---
 
-## ❓ FAQ
+## FAQ
 
 <details>
 <summary><strong>Does the app work on mobile?</strong></summary>
