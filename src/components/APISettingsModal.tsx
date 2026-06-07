@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Key, Check, ExternalLink, Trash2, AlertCircle } from 'lucide-react';
+import { X, Key, Check, ExternalLink, Trash2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 
 const API_KEY_STORAGE = 'gemini_api_key';
 
@@ -13,6 +13,7 @@ export default function APISettingsModal({ isOpen, onClose }: APISettingsModalPr
   const [apiKey, setApiKey] = useState(() => localStorage.getItem(API_KEY_STORAGE) || '');
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showKey, setShowKey] = useState(false);
 
   const handleSave = () => {
     const trimmed = apiKey.trim();
@@ -95,13 +96,22 @@ export default function APISettingsModal({ isOpen, onClose }: APISettingsModalPr
                   Votre clé API
                 </label>
                 <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={apiKey}
-                    onChange={(e) => setApiKey(e.target.value)}
-                    placeholder="AIzaSy..."
-                    className="flex-1 px-4 py-3 border border-gray-100 bg-gray-50/30 rounded-xl text-sm focus:border-black outline-none transition-all font-mono placeholder:text-gray-300"
-                  />
+                  <div className="relative flex-1">
+                    <input
+                      type={showKey ? "text" : "password"}
+                      value={apiKey}
+                      onChange={(e) => setApiKey(e.target.value)}
+                      placeholder="AIzaSy..."
+                      className="w-full px-4 py-3 pr-12 border border-gray-100 bg-gray-50/30 rounded-xl text-sm focus:border-black outline-none transition-all font-mono placeholder:text-gray-300"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowKey(!showKey)}
+                      className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black transition-colors"
+                    >
+                      {showKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
                   <button
                     onClick={handleSave}
                     className="cursor-pointer px-5 py-3 bg-black text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shrink-0"
