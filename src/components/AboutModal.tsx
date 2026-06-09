@@ -45,7 +45,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   Pourquoi utiliser <span className="text-black">Fiiltr</span> ?
                 </h2>
                 <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                  L'outil conçu avec les critères ATS pour maximiser vos chances de décrocher un entretien. 100% gratuit et open source.
+                  C'est un outil conçu avec les critères ATS pour maximiser vos chances de décrocher un entretien. 100% gratuit et open source. Pas de pub, pas de création de compte, pas de limitations. Vos données ne sont pas stockées, elles sont uniquement sauvegardées dans votre navigateur.
                 </p>
               </div>
 
