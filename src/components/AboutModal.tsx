@@ -111,7 +111,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   </div>
                   <div className="flex flex-col items-center gap-4">
                     <a
-                      href="https://geniuspay.ci/product/Fiiltr-MpsmJo"
+                      href="https://geniuspay.ci/product/fiiltr-1wIHiq"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="cursor-pointer px-8 py-4 bg-white text-black font-bold rounded-2xl flex items-center gap-3 shadow-xl transform transition hover:scale-105"
